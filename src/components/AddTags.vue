@@ -48,6 +48,10 @@
                   title: this.title,
                   ingredients: this.ingredients,
                   slug: this.slug
+                }).then(()=>{
+                  this.$router.push({name: 'Index'})
+                }).catch(err=>{
+                  console.log(err)
                 })
             }else{
               this.feedback = 'You must have a title'
