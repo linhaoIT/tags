@@ -10,6 +10,11 @@
             </li>
           </ul>
       </div>
+      <span class="btn-floating btn-large halfway-fab pink" >
+        <router-link :to="{ name: 'EditTag', params : {tag_slug: myTag.slug}}">
+          <i class="material-icons edit">edit</i>
+        </router-link>
+      </span>
     </div>
   </div>
 </template>
