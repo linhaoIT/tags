@@ -24,6 +24,7 @@
 
 <script>
   import db from '@/firebase/init'
+  import slugify from 'slugify'
     export default {
         name: "addTags",
         data() {
@@ -38,10 +39,16 @@
         methods:{
           AddTags(){
             if(this.title){
-              db.collection('tags').add({
-                title: this.title,
-                ingredients: this.ingredients
+              this.slug = slugify(this.title, {
+                replacement: '-',
+                remove: /[$*_+.()'"!-:@]/g,
+                lower:true
               })
+                db.collection('tags').add({
+                  title: this.title,
+                  ingredients: this.ingredients,
+                  slug: this.slug
+                })
             }else{
               this.feedback = 'You must have a title'
             }
