@@ -15,23 +15,40 @@
 </template>
 
 <script>
+  import db from '@/firebase/init'
+
+
 export default {
   name: 'Index',
   data () {
     return {
-      tags:[
-        { title: "COMP2017", slug: 'comp2017', ingredients: ['bananas', 'coffee', 'milk'], id: '1'},
-        { title: "COMP2018", slug: 'comp2018', ingredients: ['mango', 'coffee', 'juice'], id: '2'}
-      ]
+      tags:[]
     }
   },
   methods:{
     deleteTag(id){
-      this.tags = this.tags.filter(tag => {
-        return tag.id !== id
+      db.collection('tags').doc(id).delete().then(()=>{
+        this.tags = this.tags.filter(tag => {
+          return tag.id !== id
+        })
       })
+      // this.tags = this.tags.filter(tag => {
+      //   return tag.id !== id
+      // })
     }
+  },
+  created(){
+    db.collection('tags').get().then(snapshot => {
+      snapshot.forEach(doc =>{
+        //console.log(doc.data(), doc.id)
+        let tag = doc.data();
+        tag.id = doc.id;
+        this.tags.push(tag)
+
+      })
+    })
   }
+
 }
 </script>
 
