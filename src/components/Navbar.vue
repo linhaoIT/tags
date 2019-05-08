@@ -2,11 +2,11 @@
     <div class="navbar">
       <nav class="nav-extended #2979ff blue accent-3">
         <div class="nav-content">
-          <router-link to="">
+          <router-link :to="{ name: 'Index' }">
             <span class="nav-title">Add Tags</span>
           </router-link>
           <a href="" class="btn-floating btn-large halfway-fab #29b6f6 light-blue lighten-1">
-            <router-link to="">
+            <router-link :to="{ name : 'AddTags' }">
               <i class="material-icons">add</i>
             </router-link>
           </a>
