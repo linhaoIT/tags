@@ -4,35 +4,43 @@
       <div class="card">
         <div class="card-content">
           <ul class="messages">
-            <li>
-              <span class="teal-text">Name</span>
-              <span class="grey-text text-darken-3">message</span>
-              <span class="grey-text time">time</span>
+            <li v-for="msg in messages">
+              <span class="teal-text"> msg.name</span>
+              <span class="grey-text text-darken-3"> msg.content</span>
+              <span class="grey-text time"> msg.timeStamp</span>
             </li>
           </ul>
         </div>
         <div class="card-action">
           <NewMessage :name="name"/>
-          <input type="text" />
         </div>
       </div>
     </div>
 </template>
 
 <script>
+  import db from '@/firebase/init'
   import NewMessage from '@/components/NewMessage'
     export default {
       name: "Chat",
       props: ['name'],
       components: {
-        NewMessage
+        NewMessage,
+        msg
       },
       data(){
         return{
 
         }
-      }
+      },
+      created(){
+        let ref = db.collection('messages')
+        ref.onSnapshot(snapshot => {
+          console.log(docChanges())
+        })
     }
+
+  }
 </script>
 
 <style>
