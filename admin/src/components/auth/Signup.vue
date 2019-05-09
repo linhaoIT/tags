@@ -51,7 +51,16 @@
                 if(doc.exists){
                   this.feedback = 'This name already exists'
                 }else{
-                  firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(err =>{
+                  firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(cred =>{
+                    ref.set({
+                      name: this.name,
+                      geolocation:null,
+                      user_id: cred.user.uid
+                    })
+                  }).then(()=>{
+                    this.$router.push({name: 'Map'})
+                  })
+                    .catch(err =>{
                     console.log(err)
                     this.feedback = err.message
                   })
