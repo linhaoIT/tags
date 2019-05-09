@@ -16,6 +16,7 @@
          <label for="email">Email:</label>
          <input type="email" id="email" v-model="email">
        </div>
+       <p class="red-text center" v-if="feedback"> {{feedback}}</p>
        <div class="field center"></div>
        <button class="btn deep-purple">Signup</button>
      </form>
@@ -23,6 +24,9 @@
 </template>
 
 <script>
+  import slugify from 'slugify'
+  import db from '@/firebase/init'
+  import firebase from 'firebase'
     export default {
         name: "Signup",
       data(){
@@ -30,15 +34,33 @@
             email: null,
             password: null,
             name: null,
-            feedback: null
+            feedback: null,
+            slug: null
           }
       },
       methods:{
           signup(){
-            if(this.name){
-
+            if(this.name && this.email && this.password){
+              this.slug = slugify(this.name, {
+                replacement: '-',
+                remove: /[@:\-!"'().~+_*$]/g,
+                lower: true
+              })
+              let ref = db.collection('users').doc(this.slug)
+              ref.get().then(doc => {
+                if(doc.exists){
+                  this.feedback = 'This name already exists'
+                }else{
+                  firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(err =>{
+                    console.log(err)
+                    this.feedback = err.message
+                  })
+                  this.feedback = 'This name is free to use'
+                }
+              })
+              console.log(this.slug)
             }else{
-              this.feedback = "You must "
+              this.feedback = "You must enter all fields"
             }
           }
       }
