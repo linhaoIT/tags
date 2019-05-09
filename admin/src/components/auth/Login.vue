@@ -24,6 +24,7 @@
 </template>
 
 <script>
+    import firebase from 'firebase'
     import Navbar from "@/components/layout/Navbar";
     export default {
         name: "Login.vue",
@@ -37,7 +38,17 @@
         },
       methods:{
           login(){
-            console.log(this.email, this.password)
+            if(this.email && this.password){
+              firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(cred=>{
+                console.log(user)
+                this.$router.push({name: 'Home'})
+              }).catch(err =>{
+                this.feedback = err.message
+              })
+              this.feedback=null
+            }else{
+              this.feedback='Please fill in both fields'
+            }
           }
       }
     }
