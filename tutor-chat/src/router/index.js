@@ -3,9 +3,10 @@ import Router from 'vue-router'
 import Welcome from '@/components/Welcome'
 import Chat from '@/components/Chat'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

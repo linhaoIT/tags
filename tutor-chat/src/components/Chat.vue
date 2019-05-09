@@ -3,11 +3,11 @@
       <h2 class="center teal-text">Tutorial Session</h2>
       <div class="card">
         <div class="card-content">
-          <ul class="messages">
-            <li v-for="msg in messages">
-              <span class="teal-text"> msg.name</span>
-              <span class="grey-text text-darken-3"> msg.content</span>
-              <span class="grey-text time"> msg.timeStamp</span>
+          <ul class="messages" v-chat-scroll>
+            <li v-for="msg in messages" :key="messages.id">
+              <span class="teal-text"> {{ msg.name }}</span>
+              <span class="grey-text text-darken-3"> {{ msg.content }}</span>
+              <span class="grey-text time"> {{ msg.timestamp }}</span>
             </li>
           </ul>
         </div>
@@ -21,22 +21,32 @@
 <script>
   import db from '@/firebase/init'
   import NewMessage from '@/components/NewMessage'
+  import moment from 'moment'
     export default {
       name: "Chat",
       props: ['name'],
       components: {
         NewMessage,
-        msg
       },
       data(){
         return{
-
+          messages: []
         }
       },
       created(){
-        let ref = db.collection('messages')
+        let ref = db.collection('messages').orderBy('timestamp');
         ref.onSnapshot(snapshot => {
-          console.log(docChanges())
+          snapshot.docChanges().forEach(change => {
+            if(change.type == 'added'){
+              let doc = change.doc;
+              this.messages.push({
+                  id: doc.id,
+                  name: doc.data().name,
+                  content: doc.data().content,
+                  timestamp: moment(doc.data().timestamp).format('lll')
+              })
+            }
+          })
         })
     }
 
@@ -55,6 +65,24 @@
 
   .chat .time{
     display: block;
-    font-size: 1.2em;
+    font-size: 0.8em;
   }
+
+  .messages{
+    max-height: 300px;
+    overflow: auto;
+  }
+
+  .messages::-webkit-scrollbar{
+    width: 3px;
+  }
+
+  .messages::-webkit-scrollbar-track{
+    background: #ddd;
+  }
+
+  .messages::-webkit-scrollbar-thumb{
+    background: #aaa;
+  }
+
 </style>
