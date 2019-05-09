@@ -5,13 +5,13 @@
 </template>
 
 <script>
-  import firebase from 'firebase'
+  import db from '@/firebase/init'
     export default {
       name: "Map",
       data(){
         return {
-          lat: 53,
-          lng: -2
+          lat: 15,
+          lng: 15
         }
       },
       methods: {
@@ -26,8 +26,34 @@
         }
       },
       mounted(){
-        this.renderMap()
+        if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(pos => {
+            this.lat = pos.coords.latitude
+            this.lng = pos.coords.longitude
+
+            db.collection('users').where('user_id', '==', 'user.uid').get().then(snapshot => {
+              snapshot.forEach((doc) => {
+                db.collection('users').doc(doc.id).update({
+                  geolocation:{
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude
+                  }
+                })
+              })
+            }).then(()=>{
+              this.renderMap()
+            })
+
+            this.renderMap()
+          }, (err) => {
+            console.log(err)
+            this.renderMap()
+          }, {maximumAge: 60000, timeout: 3000 })
+        }else{
+          this.renderMap()
+        }
         //console.log(firebase.auth().currentUser)
+
 
       }
     }
