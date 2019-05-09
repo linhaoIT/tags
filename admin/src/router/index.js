@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Map from '@/components/home/Map'
 import Signup from '@/components/auth/Signup'
-import Home from '@/components/home/Home'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -15,7 +15,7 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
     },
     {
