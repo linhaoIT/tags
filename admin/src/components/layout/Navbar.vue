@@ -4,8 +4,9 @@
       <div class="container">
         <router-link :to="{name:'Home'}"><img src= '../../assets/icon.png'  alt="icon: rate my course" class="icon"></router-link>
         <ul class="right">
-          <li><a href="">Sign up</a></li>
-          <li><a href="">Login</a></li>
+          <li><router-link :to="{name: 'Signup'}">Signup</router-link></li>
+          <li><router-link :to="{name: 'Login'}">Login</router-link></li>
+          <li><a @click="logout">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+  import firebase from 'firebase'
   //import icon from
   export default {
     name: "Navbar",
@@ -23,6 +25,14 @@
     },
     components:{
       //icon
+    },
+    methods:{
+      logout(){
+        firebase.auth().signOut().then(() => {
+          this.$router.push({name: 'Signup'})
+        })
+      }
+
     }
   }
 </script>
