@@ -11,10 +11,10 @@
       </nav>
     </div>
     <img class="slogan" src="../assets/slogan.png" alt="slogan">
-    <a class="Signup waves-effect waves-light btn-large #0288d1 light-blue darken-2" href="" @click.prevent="">
-      <i class="material-icons left">assignment</i>Sign up</a>
-    <a class="Login waves-effect waves-light btn-large #0288d1 light-blue darken-2" href="" @click.prevent="">
-      <i class="material-icons left">assignment_ind</i>Log in</a>
+    <router-link class="Signup waves-effect waves-light btn-large #0288d1 light-blue darken-2" :to="{name: 'Signup'}">
+      <i class="material-icons left">assignment</i>Sign up</router-link>
+    <router-link class="Login waves-effect waves-light btn-large #0288d1 light-blue darken-2" :to="{name: 'Login'}">
+      <i class="material-icons left">assignment_ind</i>Log in</router-link>
 
   </div>
 </template>
@@ -35,7 +35,7 @@
 </script>
 
 
-<style scoped>
+<style>
   .icon {
     width: 70px;
     height: auto;

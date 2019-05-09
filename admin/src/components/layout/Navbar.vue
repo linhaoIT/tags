@@ -1,9 +1,8 @@
 <template>
-  <div class="navbar">
-    <nav class="#2979ff blue accent-3">
+  <div class="Navbar">
+    <nav class="#0288d1 light-blue darken-2">
       <div class="container">
-        <img src= '../../assets/icon.png'  alt="icon: rate my course" class="icon">
-        <a href="" class="icon left">RMC</a>
+        <router-link :to="{name:'Home'}"><img src= '../../assets/icon.png'  alt="icon: rate my course" class="icon"></router-link>
         <ul class="right">
           <li><a href="">Sign up</a></li>
           <li><a href="">Login</a></li>
@@ -36,5 +35,11 @@
     /*//background: url('@/assets/icon.jpg') center center no-repeat;*/
     /*background-size: 100px auto;*/
     /*}*/
+  }
+
+  .webname{
+    font-family: "Comic Sans MS";
+    font-size: x-large;
+    color: black;
   }
 </style>

@@ -1,7 +1,9 @@
 <template>
-   <div class="signup container">
+   <div>
+     <Navbar/>
+     <div class="signup container">
      <form @submit.prevent="signup" class="card-panel">
-       <h2 class="center deep-purple-text">Signup</h2>
+       <h2 class="center blue-text">Signup</h2>
        <div class="field">
          <label for="name">Name:</label>
          <input type="text" id="name" v-model="name">
@@ -17,9 +19,11 @@
          <input type="email" id="email" v-model="email">
        </div>
        <p class="red-text center" v-if="feedback"> {{feedback}}</p>
-       <div class="field center"></div>
-       <button class="btn deep-purple">Signup</button>
+       <div class="field center">
+       <button class="btn #0288d1 light-blue darken-2">Signup</button>
+       </div>
      </form>
+     </div>
    </div>
 </template>
 
@@ -27,8 +31,10 @@
   import slugify from 'slugify'
   import db from '@/firebase/init'
   import firebase from 'firebase'
+  import Navbar from "@/components/layout/Navbar";
     export default {
         name: "Signup",
+      components: {Navbar},
       data(){
           return{
             email: null,
