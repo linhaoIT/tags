@@ -4,7 +4,7 @@
       <div class=" center frame">
           <router-link :to="{name: 'Welcome'}"><img class="Tutoring fig" src="../../assets/diss.jpg"></router-link>
           <router-link :to="{name: 'Map'}"><img class="hangout fig" src="../../assets/trav.jpg"></router-link>
-           <router-link :to="{name: 'Index'}"><img class="notes fig" src="../../assets/note.jpg"></router-link>
+           <router-link :to="{name: 'Tag'}"><img class="notes fig" src="../../assets/note.jpg"></router-link>
       </div>
   </div>
 </template>
@@ -41,14 +41,7 @@
     max-width: 1000px;
     max-hight:400px;
   }
-  .text{
-    position: relative;
-  }
 
-  .smallframe{
-    position: relative;
-  }
-  
 
   .wkspace{
     position: relative;

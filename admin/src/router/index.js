@@ -52,7 +52,7 @@ const router = new Router({
     },
     {
       path: '/workspace',
-      name: 'workspace',
+      name: 'WorkSpace',
       component: WorkSpace,
 
     },
@@ -95,9 +95,6 @@ const router = new Router({
       path: '/index',
       name: 'Index',
       component: Index,
-      meta:{
-        requiresAuth:true
-      }
     },
     {
       path: '/add-tags',
