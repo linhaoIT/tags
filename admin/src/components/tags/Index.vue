@@ -4,8 +4,8 @@
       <div class="card-content">
         <i class="material-icons delete" @click="deleteTag(myTag.id)">delete</i>
         <h2 class="indigo-text">{{ myTag.title }}</h2>
-          <ul class="ingredients">
-            <li v-for="(ing, index) in myTag.ingredients" :key="index">
+          <ul class="component">
+            <li v-for="(ing, index) in myTag.component" :key="index">
               <span class="chip">{{ ing }}</span>
             </li>
           </ul>
@@ -70,11 +70,11 @@ export default {
     text-align: center;
     margin-top: 0;
   }
-  .index .ingredients{
+  .index .component{
     margin: 30px auto;
   }
 
-  .index .ingredients li{
+  .index .component li{
     display: inline-block;
   }
 

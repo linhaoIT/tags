@@ -6,14 +6,14 @@
           <label for="title">Tag Title:</label>
           <input type="text" name="title" id="title" v-model="tag.title">
         </div>
-        <div class="field" v-for="(ing, index) in tag.ingredients" :key="index" >
-          <label for="ingredient">Ingredient:</label>
-          <input type="text" name="ingredient" id="ingredient" v-model="tag.ingredients[index]">
+        <div class="field" v-for="(ing, index) in tag.components" :key="index" >
+          <label for="component">component:</label>
+          <input type="text" name="component" id="component" v-model="tag.components[index]">
           <i class="material-icons delete" @click="deleteIng(ing)">delete</i>
         </div>
-        <div class="field add-ingredient">
-          <label for="add-ingredient"> Add-ingredient</label>
-          <input type="text" name="ingredient" id="add-ingredient" @keydown.tab.prevent="AddIng" v-model="another">
+        <div class="field add-component">
+          <label for="add-component"> Add-component</label>
+          <input type="text" name="component" id="add-component" @keydown.tab.prevent="AddIng" v-model="another">
         </div>
         <div class="field center-align">
           <p v-if="feedback" class="red-text">{{ feedback }}</p>
@@ -47,7 +47,7 @@
                 });
                 db.collection('tags').doc(this.tag.id).update({
                   title: this.tag.title,
-                  ingredients: this.tag.ingredients,
+                  components: this.tag.components,
                   slug: this.tag.slug
                 }).then(()=>{
                   this.$router.push({name: 'Index'})
@@ -60,16 +60,16 @@
             },
         AddIng(){
           if(this.another){
-            this.tag.ingredients.push(this.another);
+            this.tag.components.push(this.another);
             this.another = null;
             this.feedback = null
           }else{
-            this.feedback = 'You must enter a value to add an ingredient'
+            this.feedback = 'You must enter a value to add an component'
           }
         },
         deleteIng(ing){
-          this.tag.ingredients = this.tag.ingredients.filter(ingredient => {
-            return ingredient !== ing
+          this.tag.components = this.tag.components.filter(component => {
+            return component !== ing
           })
         }
       },
