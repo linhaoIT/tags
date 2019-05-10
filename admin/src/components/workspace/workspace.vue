@@ -2,10 +2,11 @@
   <div class="wkspace">
     <Navbar/>
       <div class=" center frame">
-        <router-link :to="{name: ''"}><img class="rating fig" src="../../assets/rate.jpg"></router-link>
-        <router-link :to="{name: ''"}><img class="notes fig" src="../../assets/note.jpg"></router-link>
-        <router-link :to="{name: ''"}><img class="Tutoring fig" src="../../assets/diss.jpg"></router-link>
-        <router-link :to="{name: ''"}><img class="hangout fig" src="../../assets/trav.jpg"></router-link>
+
+        <router-link :to="{name: 'Welcome'}"><img class="Tutoring fig" src="../../assets/diss.jpg"></router-link>
+        <router-link :to="{name: 'Map'}"><img class="hangout fig" src="../../assets/trav.jpg"></router-link>
+        <router-link :to="{name: 'Index'}"><img class="notes fig" src="../../assets/note.jpg"></router-link>
+        <router-link :to="{name: ''}"><img class="rating fig" src="../../assets/rate.jpg"></router-link>
       </div>
   </div>
 </template>

@@ -5,11 +5,17 @@ import Signup from '@/components/auth/Signup'
 import Login from '@/components/auth/Login'
 import Home from '@/components/Home'
 import firebase from "firebase";
+import Welcome from '@/components/tutorchat/Welcome'
+import Chat from '@/components/tutorchat/Chat'
 import ViewProfile from "@/components/profile/ViewProfile";
 import WorkSpace from "@/components/workspace/workspace"
 
-Vue.use(Router);
+import Index from '@/components/tags/Index'
+import AddTags from '@/components/tags/AddTags'
+import EditTag from '@/components/tags/EditTag'
 
+Vue.use(Router);
+mode: 'history';
 const router = new Router({
   routes: [
     {
@@ -48,6 +54,42 @@ const router = new Router({
       meta:{
         requiresAuth:true
       }
+    },
+
+
+    {
+      path: '/Welcome',
+      name: 'Welcome',
+      component: Welcome
+    },
+    {
+      path:'/chat',
+      name:'Chat',
+      component: Chat,
+      props: true,
+      beforeEnter: (to, from, next) => {
+        if(to.params.name){
+          next()
+        }else{
+          next({name: 'Welcome'})
+        }
+      }
+
+    },
+    {
+      path: '/index',
+      name: 'Index',
+      component: Index
+    },
+    {
+      path: '/add-tags',
+      name: 'AddTags',
+      component: AddTags
+    },
+    {
+      path: '/edit-tag/:tag_slug',
+      name: 'EditTag',
+      component: EditTag
     }
   ]
 });

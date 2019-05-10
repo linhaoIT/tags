@@ -2,7 +2,7 @@
   <div>
     <Navbar/>
     <div class="login container">
-      <form class="card-panel">
+      <form class="card-panel" submit.prevent="login">
         <h2 class="center blue-text">Login</h2>
 
           <div class="field">
