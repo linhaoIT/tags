@@ -64,7 +64,7 @@
                       user_id: cred.user.uid
                     })
                   }).then(()=>{
-                    this.$router.push({name: 'Map'})
+                    this.$router.push({name: 'WorkSpace'})
                   })
                     .catch(err =>{
                     console.log(err)

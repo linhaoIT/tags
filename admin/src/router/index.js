@@ -9,6 +9,7 @@ import Welcome from '@/components/tutorchat/Welcome'
 import Chat from '@/components/tutorchat/Chat'
 import ViewProfile from "@/components/profile/ViewProfile";
 import WorkSpace from "@/components/workspace/workspace"
+import Tag from '@/components/tags/tag'
 
 import Index from '@/components/tags/Index'
 import AddTags from '@/components/tags/AddTags'
@@ -25,6 +26,11 @@ const router = new Router({
       meta:{
         requiresAuth:true
       }
+    },
+    {
+      path: '/tag',
+      name: 'Tag',
+      component: Tag,
     },
     {
       path: '/',
