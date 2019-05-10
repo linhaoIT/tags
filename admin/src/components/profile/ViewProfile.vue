@@ -1,7 +1,7 @@
 <template>
   <div class="view-profile container">
     <div v-if="profile" class="card">
-      <h2 class="deep-purple-text center">{{ profile.alias }}'s Wall</h2>
+      <h2 class="deep-purple-text center">{{ profile.name }}'s Wall</h2>
     </div>
   </div>
 </template>
