@@ -2,11 +2,9 @@
   <div class="wkspace">
     <Navbar/>
       <div class=" center frame">
-
-        <router-link :to="{name: 'Welcome'}"><img class="Tutoring fig" src="../../assets/diss.jpg"></router-link>
-        <router-link :to="{name: 'Map'}"><img class="hangout fig" src="../../assets/trav.jpg"></router-link>
-        <router-link :to="{name: 'Index'}"><img class="notes fig" src="../../assets/note.jpg"></router-link>
-        <router-link :to="{name: ''}"><img class="rating fig" src="../../assets/rate.jpg"></router-link>
+          <router-link :to="{name: 'Welcome'}"><img class="Tutoring fig" src="../../assets/diss.jpg"></router-link>
+          <router-link :to="{name: 'Map'}"><img class="hangout fig" src="../../assets/trav.jpg"></router-link>
+           <router-link :to="{name: 'Index'}"><img class="notes fig" src="../../assets/note.jpg"></router-link>
       </div>
   </div>
 </template>
@@ -29,7 +27,13 @@
     float:left;
     margin: 40px 40px;
     cursor: pointer;
+    /*opacity:0;*/
+    /*filter(alpha=0)*/
+    /*opacity: 0.8; filter(alpha=80);*/
   }
+
+  /*fig{opacity: 0.8; filter(alpha=80)}*/
+  /*fig:hover{opacity:1; filter(alpha=100)}*/
 
   .frame{
     position: relative;
@@ -37,6 +41,14 @@
     max-width: 1000px;
     max-hight:400px;
   }
+  .text{
+    position: relative;
+  }
+
+  .smallframe{
+    position: relative;
+  }
+  
 
   .wkspace{
     position: relative;

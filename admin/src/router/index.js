@@ -31,6 +31,9 @@ const router = new Router({
       path: '/tag',
       name: 'Tag',
       component: Tag,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path: '/',
@@ -66,7 +69,10 @@ const router = new Router({
     {
       path: '/Welcome',
       name: 'Welcome',
-      component: Welcome
+      component: Welcome,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path:'/chat',
@@ -79,13 +85,19 @@ const router = new Router({
         }else{
           next({name: 'Welcome'})
         }
+      },
+      meta:{
+        requiresAuth:true
       }
 
     },
     {
       path: '/index',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path: '/add-tags',
