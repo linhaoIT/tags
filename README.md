@@ -1,11 +1,12 @@
 # RMC
+Hosting URL: https://admin-f39c4.firebaseapp.com
 
 Rate My Course
 * Log in/Sign up page
 * Mainpage: 4 sections
-  * **Signature course**: Recommanded order to take a course
+  * **Signature course**: Notes
   * **Online chatting with mentor**: One on one chatting with a mentor who can give you suggestions
-  * **Course & discription and feedback**: Which courses show I enroll? How about the failure rate?
+  * **Hang out with your riends**: You should not spend all day studying! It's party time!
   * **Suggested professor**: Those are the studnet most like professors!
 * Log out -> Login page
 
